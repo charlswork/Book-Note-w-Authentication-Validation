@@ -1,0 +1,50 @@
+<%- include("partials/header") -%>
+
+<div class="header-container">
+    <h1 class="page-title">Books You've Read</h1>
+    <a href="/home" class="go-home-link">Go Back to Home</a>
+</div>
+
+<!-- Dropdown for Sorting -->
+<div class="dropdown">
+  <button class="dropdown-button">
+    Sort By
+    <span class="arrow">▼</span>
+  </button>
+  <div class="dropdown-menu">
+    <a href="/books/userBooksRead?sort=rating&order=asc" class="dropdown-item">Sort by Rating (Asc)</a>
+    <a href="/books/userBooksRead?sort=rating&order=desc" class="dropdown-item">Sort by Rating (Desc)</a>
+    <a href="/books/userBooksRead?sort=updated_at&order=desc" class="dropdown-item">Sort by Recency</a>
+    <a href="/books/userBooksRead?sort=created_at&order=asc" class="dropdown-item">Sort by Creation Date (Asc)</a>
+    <a href="/books/userBooksRead?sort=created_at&order=desc" class="dropdown-item">Sort by Creation Date (Desc)</a>
+  </div>
+</div>
+
+<!-- Add a container for sorting functionality -->
+<div id="books-container">
+  <% books.forEach(book => { %>
+  <div
+    class="book-item"
+    data-rating="<%= book.rating %>"
+    data-created-at="<%= book.created_at %>"
+    data-updated-at="<%= book.updated_at %>"
+  >
+    <a href="/book/read/<%= book.book_id %>">
+      <img
+        src="<%= book.cover_url %>"
+        alt="Cover of <%= book.title %>"
+        class="book-cover"
+      />
+    </a>
+    <h3><a href="/book/read/<%= book.book_id %>"><%= book.title %></a></h3>
+    <p><strong>Author:</strong> <%= book.author %></p>
+    <p><strong>Review:</strong> <%= book.review %></p>
+    <p><strong>Rating:</strong> <%= book.rating %></p>
+
+    <!-- Button to mark the book as unread -->
+    <button onclick="markAsUnread('<%= book.book_id %>')">Mark as Unread</button>
+  </div>
+  <% }); %>
+</div>
+
+<%- include("partials/footer") -%>

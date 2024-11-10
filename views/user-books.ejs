@@ -1,0 +1,21 @@
+<%- include("partials/header") -%>
+
+<!-- Header with title and home link aligned with space-between -->
+<div class="books-header">
+  <h1 class="books-title">Books Read by <%= username %></h1>
+  <a href="/home" class="books-home-link">Go Back to Home</a>
+</div>
+
+<div class="books-container">
+  <% userBooks.forEach(book => { %>
+  <div class="books-item">
+    <img src="<%= book.cover_url %>" alt="<%= book.title %> cover" class="books-cover">
+    <h2 class="books-name"><%= book.title %></h2>
+    <p class="books-author">by <%= book.author %></p>
+    <p class="books-rating">Rating: <%= book.rating %> / 5</p>
+    <p class="books-review"><%= book.review %></p>
+  </div>
+  <% }) %>
+</div>
+
+<%- include("partials/footer") -%>

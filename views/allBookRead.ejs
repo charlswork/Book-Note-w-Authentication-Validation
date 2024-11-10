@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Books You've Read</title>
+  <link rel="stylesheet" href="/path/to/your/css">
+</head>
+<body>
+  <h1>Books You've Read</h1>
+
+  <% if (readBooks.length > 0) { %>
+    <div class="book-list">
+      <% readBooks.forEach((book) => { %>
+        <div class="book-item">
+          <% if (book.cover_url) { %>
+            <img src="<%= book.cover_url %>" alt="<%= book.title %> cover" class="book-cover" />
+          <% } else { %>
+            <p>No cover available.</p>
+          <% } %>
+          
+          <h2><%= book.title %></h2>
+          <h3>by <%= book.author %></h3>
+          
+          <p><strong>Rating:</strong> <%= book.rating ? `${book.rating} / 5` : "Not rated" %></p>
+          <p><strong>Review:</strong> <%= book.review ? book.review : "No review" %></p>
+          <p><small><strong>Date Read:</strong> <%= book.created_at.toDateString() %></small></p>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>You haven't marked any books as read yet.</p>
+  <% } %>
+</body>
+</html>

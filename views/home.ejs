@@ -1,0 +1,65 @@
+<%- include("partials/header") -%>
+<div class="header-style">
+  <h1 class="title-firstPage">
+    Different programming books that you can read and learn
+  </h1>
+  <p class="summary">
+    Explore a curated collection of programming books designed to enhance your
+    skills and knowledge. Each book is carefully selected to cover a variety of
+    programming topics, from beginner to advanced levels. Whether you're looking
+    to dive into a new programming language, improve your problem-solving
+    abilities, or understand the principles of software development, our list of
+    programming books has something for everyone. Browse through the collection
+    and discover books that provide in-depth explanations, hands-on examples,
+    and expert insights. Each entry includes a cover image, book title, author,
+    and current reading status, allowing you to easily track your progress.
+    Start your journey of mastering programming today!
+  </p>
+</div>
+<div class="h2-style">
+  <h2 class="availableBooks">All available books</h2>
+  <a href="/books/userBooksRead">View Read Books Here</a>
+</div>
+
+<div class="user-profiles">
+  <h2>Users</h2>
+  <div class="profile-grid">
+    <% users.forEach(user => { %>
+    <div class="user-profile">
+      <a href="/user/<%= user.user_id %>">
+        <div class="profile-circle">
+          <span><%= user.username[0].toUpperCase() %></span>
+        </div>
+        <p><%= user.username %></p>
+      </a>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<!-- Book List Section -->
+<div class="book-list">
+  <h2>All Available Books</h2>
+  <div class="books">
+    <% books.forEach(book => { %>
+    <div class="book">
+      <a href="/book/read/<%= book.book_id %>">
+        <% if (book.cover_url) { %>
+        <img
+          src="<%= book.cover_url %>"
+          alt="<%= book.title %> cover"
+          class="book-cover"
+        />
+        <% } else { %>
+        <p>No cover available for this book.</p>
+        <% } %>
+      </a>
+      <h2><%= book.title %></h2>
+      <h3><%= book.author %></h3>
+      <p>Status: <%= book.read ? "Read" : "Unread" %></p>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include("partials/footer") -%>

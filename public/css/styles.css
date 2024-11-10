@@ -1,0 +1,852 @@
+body {
+  background-color: #f3f4f6; /* Soft background color for contrast */
+}
+
+/* =====================footer styling =========================== */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0; /* Ensure it starts from the left edge */
+  width: 100%; /* Full width */
+  background-color: #2d2d2d;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+.summary {
+  text-align: justify;
+}
+.footer p {
+  margin: 0;
+}
+
+.footer a {
+  color: #6cb2eb;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 0.3rem;
+}
+
+.footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+/* ===========================for css book.ejs===================== */ /* Container for the book list */
+
+.h2-style {
+  font-family: "Cinzel", serif; /* or 'Merriweather' or 'Caveat' */
+
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title-firstPage {
+  font-family: "Cinzel", serif; /* or 'Merriweather' or 'Caveat' */
+  font-size: 50px;
+}
+a {
+  text-decoration: underline; /* Keep the underline by default */
+  color: inherit; /* Inherit the text color */
+  transition: text-decoration-color 0.3s ease, color 0.3s ease; /* Smooth transition for color and underline */
+}
+
+a:hover {
+  text-decoration-color: #1e40af; /* Change the underline color on hover */
+  color: #1e40af; /* Change the text color on hover */
+  font-weight: bold; /* Optionally make the text bold on hover */
+}
+
+.summary {
+  font-family: "Cinzel", serif; /* or 'Merriweather' or 'Caveat' */
+  margin-bottom: 20px; /* Space below the paragraph */
+  border-bottom: 2px solid #cccccc; /* Light gray line as the separator */
+  padding-bottom: 10px; /* Space between text and the line */
+}
+
+/* Book card styling */
+.book {
+  background-color: #ffffff; /* White background for the book card */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  border-radius: 12px; /* Rounded corners */
+  padding: 20px;
+  width: 180px; /* Adjust the width of each card */
+  margin: 0 auto; /* Centers each book card within the grid */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* For positioning the background image */
+  overflow: hidden; /* Ensures the background image doesn't overflow the card */
+  height: auto; /* Let the card height adjust based on content */
+  background-size: cover; /* Ensures the background image covers the area */
+  background-position: center; /* Centers the background image */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Book card hover effect */
+.book:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Book cover styling */
+.book-cover {
+  width: 100%; /* Make sure the cover takes full width of the card */
+  height: 300px; /* Fixed height for all images */
+  object-fit: cover; /* Ensures images cover the area without stretching */
+  border-radius: 8px; /* Rounded corners for the cover */
+  margin-bottom: 15px;
+  z-index: 2; /* Ensure the image stays above the background */
+}
+
+/* Book title and author styling */
+.book h2 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.book h3 {
+  font-size: 0.9rem;
+  color: #666666;
+  margin-bottom: 12px;
+}
+
+/* Status styling */
+.book p {
+  font-size: 0.9rem;
+  color: #777777;
+  margin-top: 8px;
+  font-style: italic;
+  z-index: 3; /* Ensure text content stays on top */
+}
+
+/* Responsive adjustments for grid */
+.books {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns on larger screens */
+  gap: 24px; /* Space between each book card */
+}
+
+@media (max-width: 1920px) {
+  .books {
+    grid-template-columns: repeat(5, 1fr); /* 3 columns on medium screens */
+  }
+  body {
+    padding: 2rem;
+  }
+}
+@media (max-width: 1024px) {
+  .books {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .books {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+  }
+}
+
+/* done */
+@media (max-width: 375px) {
+  .books {
+    grid-template-columns: 1fr; /* 1 column on mobile screens */
+  }
+  .title-firstPage {
+    font-size: 2rem;
+  }
+  .availableBooks {
+    font-size: 1rem;
+  }
+  a {
+    font-size: 0.8rem;
+  }
+  .header-style {
+    padding: 5px;
+    text-align: justify;
+  }
+  .h2-style {
+    padding: 1rem;
+  }
+}
+
+/* done */
+@media (max-width: 480px) {
+  .books {
+    grid-template-columns: 1fr; /* 1 column on mobile screens */
+  }
+  .title-firstPage {
+    font-size: 1.5rem;
+  }
+  .availableBooks {
+    font-size: 0.8rem;
+  }
+  a {
+    font-size: 0.6rem;
+  }
+  .header-style {
+    padding: 5px;
+    text-align: justify;
+  }
+  .h2-style {
+    padding: 1rem;
+  }
+  .summary {
+    font-size: 0.8rem;
+  }
+}
+
+/* General Styling for the User Profiles */
+.user-profiles {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Profile Grid Styling */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Each Profile Card */
+.user-profile {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  padding: 20px;
+  text-align: center;
+}
+
+.user-profile:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+/* Profile Circle */
+.profile-circle {
+  width: 60px;
+  height: 60px;
+  background-color: #007bff; /* Blue color */
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+}
+
+.user-profile p {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* styles css for userbooks */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: #0073e6;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  min-width: 160px;
+  z-index: 1;
+  margin-top: 8px;
+}
+
+.dropdown-menu.open {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.book-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.book-cover {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+
+
+
+
+
+
+/* registratin css */
+/* Container for the registration form */
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the content */
+  position: absolute; /* Use absolute positioning */
+  top: 50%; /* Position it 50% from the top of the screen */
+  left: 50%; /* Position it 50% from the left of the screen */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Adjust the element back by half its own width and height to center */
+}
+
+/* Title styling */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form label and input styling */
+label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  transition: border 0.3s ease;
+}
+
+/* Input focus styling */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* Submit button styling */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #45a049;
+}
+
+/* Sign-in link styling */
+.signin-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signin-link a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signin-link a:hover {
+  text-decoration: underline;
+}
+/* login css */
+/* Container for the login form */
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the content */
+  position: absolute; /* Use absolute positioning */
+  top: 50%; /* Position it 50% from the top of the screen */
+  left: 50%; /* Position it 50% from the left of the screen */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Adjust the element back by half its own width and height to center */
+}
+
+/* Title styling */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form label and input styling */
+label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  transition: border 0.3s ease;
+}
+
+/* Input focus styling */
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* Submit button styling */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #45a049;
+}
+
+/* Sign-up link styling */
+.signup-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-link a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+/* userBooks css */
+
+/* Container for the whole page */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+/* Dropdown button styling */
+.dropdown {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.dropdown-button {
+  padding: 12px 20px;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-button .arrow {
+  margin-left: 8px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-top: 5px;
+  z-index: 10;
+}
+
+.dropdown-menu a {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f5f5f5;
+}
+
+/* Hover effect for dropdown button */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Styling for each book item */
+.book-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-cover {
+  width: 150px;
+  height: 225px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.book-item h3 {
+  font-size: 20px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.book-item p {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.book-item button {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+}
+
+.book-item button:hover {
+  background-color: #d32f2f;
+}
+
+.book-item a {
+  text-decoration: none;
+  color: #333;
+}
+.page-title {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+.book-item a:hover {
+  text-decoration: underline;
+}
+/* Style for Go Back to Home link */
+.go-home-link {
+  font-size: 16px;
+  color: #4caf50;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 2px solid #4caf50;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+.go-home-link:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+.go-home-link a {
+  font-size: 16px;
+  color: #4caf50;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid #4caf50;
+  border-radius: 5px;
+
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.go-home-link a:hover {
+  background-color: #4caf50;
+  color: white;
+}
+/* user-book */
+
+/* Flexbox container for header with space between title and home link */
+.books-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Styling for the header title */
+.books-title {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+/* Styling for the "Go Back to Home" link */
+.books-home-link {
+  font-size: 16px;
+  color: #4caf50;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 2px solid #4caf50;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.books-home-link:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* Styling for the books container */
+.books-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Individual book item styling */
+.books-item {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Book cover styling */
+.books-cover {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+/* Book title styling */
+.books-name {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0 5px;
+}
+
+/* Book author styling */
+.books-author {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Book rating styling */
+.books-rating {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Book review styling */
+.books-review {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}
+/* bookdetails */
+.book-details {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Book cover styling */
+.book-cover {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+/* No cover message styling */
+.no-cover {
+  color: #999;
+  font-style: italic;
+}
+
+/* Author styling */
+.author {
+  font-size: 18px;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* Form for updating status */
+.status-form {
+  margin-top: 10px;
+}
+
+.status-button {
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.status-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.status-button:hover:not(:disabled) {
+  background-color: #45A049;
+}
+
+/* Review form styling */
+.review-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-form label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.review-form textarea,
+.review-form input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+/* Display of submitted review and rating */
+.review-display, .rating-display, .note-display {
+  margin: 10px 0;
+  color: #555;
+}
+
+/* Submit review button styling */
+.submit-button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #45A049;
+}

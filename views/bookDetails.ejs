@@ -1,0 +1,44 @@
+<%- include("partials/header") -%>
+<div class="book-details">
+  <div class="header-container">
+    <h2 class="book-title"><%= book.title %></h2>
+    <a href="/home" class="go-home-link">Go Back to Home</a>
+  </div>
+
+  <% if (book.cover_url) { %>
+    <img
+      src="<%= book.cover_url %>"
+      alt="<%= book.title %> cover"
+      class="book-cover"
+    />
+  <% } else { %>
+    <p class="no-cover">No cover available for this book.</p>
+  <% } %>
+
+  <h3 class="author">by <%= book.author %></h3>
+  <p><strong>Status:</strong> <%= book.read ? "Read" : "Unread" %></p>
+
+  <form action="/book/updateStatus/<%= book.book_id %>" method="POST" class="status-form">
+    <button type="submit" class="status-button" <%= book.read ? 'disabled' : '' %>>
+      Mark as Read
+    </button>
+  </form>
+
+  <form action="/book/addReview/<%= book.book_id %>" method="POST" class="review-form">
+    <label for="review">Review:</label>
+    <textarea id="review" name="review" required><%= book.review || '' %></textarea>
+
+    <label for="note">Note:</label>
+    <textarea id="note" name="note" required><%= book.note || '' %></textarea>
+
+    <p class="review-display"><%= book.review || "No review submitted yet" %></p>
+    <p class="rating-display"><%= book.rating ? `${book.rating}/5` : "No rating yet" %></p>
+    <p class="note-display"><%= book.note || "No submitted notes" %></p>
+
+    <label for="rating">Rating (1-5):</label>
+    <input type="number" id="rating" name="rating" min="1" max="5" required value="<%= book.rating || '' %>" />
+
+    <button type="submit" class="submit-button">Submit Review</button>
+  </form>
+</div>
+<%- include("partials/footer") -%>
